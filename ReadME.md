@@ -2,17 +2,37 @@
 
 ## Server-Side APIs: Weather Dashboard
 
-Weather Dashboard:
+Weather Dashboard: This project is a weather dashboard with search functionality to find current weather conditions and forecasted weather for cities all over the world. It uses the OpenWeather API to retrieve data for the cities, AJAX to hook into the API to retrieve the data in JSON format, dynamically updated HTML and CSS powered by jQuery, and displays a search history which the user can click to access past cities searched via local storage.
+
+
 
 # How to access?
-The website can be found at the following address: https://github.com/Nikstar-1/weather-dashboard
+The website can be found at the following address:
+https://nikstar-1.github.io/weather-dashboard/
 
 
 
 # Motivation
-As someone who travels a lot, and loves city breaks, this will help me plan adventures away according to the weather.
+As someone who travels frequently this'll help me plan adventures away according to weather conditions, I'll never forget my brolly again!
 
-# Moving forward
+## Functionality
+-Input a city, 
+-Dashboards will then display the current weather for a city
+-Plus, a 5 day forecast for current weather searched initially
+-Weather conditions, temperature, humidity, wind speed, and the UV index results shown
+-units=imperial", "&units=metric" applied i.e °C, %, MPH, UV index
+-Saves your search into a search history, so you can go back if needed!
+-Refresh to start a new search
+
+
+## Built With
+HTML
+CSS
+Openweathermap api
+Javascript
+Bootstrap
+moment.js
+
 
 
 
@@ -21,13 +41,6 @@ As someone who travels a lot, and loves city breaks, this will help me plan adve
 **Weather Dashboard Main.**
 !["Start Page"](Screenshots/mainPage.png "Start page.")
 
-
-**Weather Dashboard complete page.**
-!["Start Page"](Screenshots/completePage.png "Weather Dashboard completed page.")
-
-**Weather Dashboard sample.**
-!["Start Page"](Screenshots/sample.png "Weather Dashboard completed page.")
- 
 
 
 

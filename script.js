@@ -1,4 +1,4 @@
-
+//System is ready for input
 $(document).ready(function() {
     
     $("#submitWeather").on("click", function(event){
@@ -9,10 +9,10 @@ $(document).ready(function() {
     });
 
     
-    //Connect API key
+    //Connect API key to api open weather map and get information 
     function getCityWeather(city){
     $.ajax({
-        url: "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=84d8ea5be6d3527e97c1d32d85112fb7",
+        url: "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=84d8ea5be6d3527e97c1d32d85112fb7"+ "&units=imperial",
        type: "GET",
        dataType: "json",
        success: function(data){
@@ -20,36 +20,31 @@ $(document).ready(function() {
            let cityName = document.getElementById("city-name"); 
            cityName.textContent += data.name;
            let cityTemp = document.getElementById("city-temp");
-           cityTemp.textContent += data.main.temp;
+           cityTemp.textContent += " " + data.main.temp + " °C";
            let cityHumidity = document.getElementById("city-humidity");
-           cityHumidity.textContent += data.main.humidity;
+           cityHumidity.textContent += " " + data.main.humidity  + " %";
            let cityWindSpeed = document.getElementById("city-windspeed");
-           cityWindSpeed.textContent += data.wind.speed;
-           //temp data.main.temp
-           //wind speed 
-           //humidity
+           cityWindSpeed.textContent += " " + data.wind.speed + " MPH";
+        //Weather text and symbols applied
            returnWeatherForecast(city);
            getUVI(data.coord.lat, data.coord.lon);
+           cityTemp.textContent += " " + data.main.temp + " °C";
 
-        
+        //Date added to the page alongside city when uploaded into the browser
            var nowMoment = moment();
 
-      var displayMoment = $("<h3>");
-      $("#city-name").empty();
-      $("#city-name").append(
-        displayMoment.text("(" + nowMoment.format("M/D/YYYY") + ")")
-      );
-       }
+           var displayMoment = $("<h1>");
+           $("#city-name").append(
+           displayMoment.text("(" + nowMoment.format("D/M/YYYY") + ")")
+         );
+         }
         })
         
-
-        
-
     }
 
-    function returnWeatherForecast(city) {
-        let queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric&appid=84d8ea5be6d3527e97c1d32d85112fb7";
-        $.ajax({
+         function returnWeatherForecast(city) {
+         let queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric&appid=84d8ea5be6d3527e97c1d32d85112fb7";
+         $.ajax({
             url: queryURL,
            type: "GET",
            dataType: "json",
@@ -64,25 +59,20 @@ $(document).ready(function() {
                forecast4.textContent = data.list[4].main.temp
                let forecast5 = document.getElementById("forecast5");
                forecast5.textContent = data.list[5].main.temp
-
-               
                //data.list[1].data.main.temp
                //data.list[2].data.main.humidity
                // data.list[3].data.wind.speed
                console.log(data, "data")
                
  
-               
-            
-              
                //create elements witrhin that div above and aasign values using data.list[1].wind.speed
-    }
-})
-    }
+          }
+         })
+         }
 
-    function getUVI(lat, lon){
-        let queryURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=84d8ea5be6d3527e97c1d32d85112fb7"
-        $.ajax({
+              function getUVI(lat, lon){
+            let queryURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=84d8ea5be6d3527e97c1d32d85112fb7"
+           $.ajax({
             url: queryURL,
            type: "GET",
            dataType: "json",
