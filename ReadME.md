@@ -8,12 +8,12 @@ Weather Dashboard:
 The website can be found at the following address: https://github.com/Nikstar-1/weather-dashboard
 
 
-# Usage
 
 # Motivation
-As someone who travels a lot and loves city breaks, this will help me plan days away according to the weather.
+As someone who travels a lot, and loves city breaks, this will help me plan adventures away according to the weather.
 
 # Moving forward
+
 
 
 ## Screenshots:

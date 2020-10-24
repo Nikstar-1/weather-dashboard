@@ -5,6 +5,7 @@ $(document).ready(function() {
         getCityWeather(city);
         populateHistorySection(city);
     });
+
     
     //Connect API key
     function getCityWeather(city){
@@ -28,9 +29,10 @@ $(document).ready(function() {
            returnWeatherForecast(city);
            getUVI(data.coord.lat, data.coord.lon);
        }
-        });
+        })
 
     }
+
     function returnWeatherForecast(city) {
         let queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric&appid=84d8ea5be6d3527e97c1d32d85112fb7";
         $.ajax({
@@ -39,19 +41,26 @@ $(document).ready(function() {
            dataType: "json",
            success: function(data){
                let forecast1 = document.getElementById("forecast1"); 
+               forecast1.textContent = data.list[0].main.temp 
                let forecast2 = document.getElementById("forecast2");
+               forecast2.textContent = data.list[1].main.temp 
                let forecast3 = document.getElementById("forecast3");
+               forecast3.textContent = data.list[2].main.temp
                let forecast4 = document.getElementById("forecast4"); 
+               forecast4.textContent = data.list[4].main.temp
                let forecast5 = document.getElementById("forecast5");
-               data.list[1].data.main.temp
-               data.list[2].data.main.humidity
-               data.list[3].data.wind.speed
-               
+               forecast5.textContent = data.list[5].main.temp
+               //data.list[1].data.main.temp
+               //data.list[2].data.main.humidity
+               // data.list[3].data.wind.speed
+               console.log(data, "data")
 
+               
+            
               
                //create elements witrhin that div above and aasign values using data.list[1].wind.speed
     }
-});
+})
     }
 
     function getUVI(lat, lon){
@@ -64,27 +73,26 @@ $(document).ready(function() {
                console.log(data);
                let UV = document.getElementById("UV"); 
            UV.textContent = "UV Index: " + data.value;
-           }
-    });
-   
-    }
-
-    function populateHistorySection(city){
 
     
-    
 
 
 
-        let localHistory = JSON.parse(window.localStorage.getItem("history")) || [];
-        localHistory.push(city);
-        window.localStorage.setItem("history",JSON.stringify(localHistory))
 
-        // const historyList = document.getElementById("historyList")
-        // for (let i =0; i < localStorageHistory.length; i++){
-        //     let historyElement = document.createElement("li")
-        //     historyElement.val = historyList[i];
-        //     historyList.appendChild(historyElement); 
-        }
-    
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+           }})}
+
+
+        })
