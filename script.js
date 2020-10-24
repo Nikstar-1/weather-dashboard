@@ -1,4 +1,6 @@
+
 $(document).ready(function() {
+    
     $("#submitWeather").on("click", function(event){
         event.preventDefault();
         let city = $("#city").val();
@@ -16,20 +18,32 @@ $(document).ready(function() {
        success: function(data){
            console.log(data)
            let cityName = document.getElementById("city-name"); 
-           cityName.textContent = data.name;
+           cityName.textContent += data.name;
            let cityTemp = document.getElementById("city-temp");
-           cityTemp.textContent = data.main.temp;
+           cityTemp.textContent += data.main.temp;
            let cityHumidity = document.getElementById("city-humidity");
-           cityHumidity.textContent = data.main.humidity;
+           cityHumidity.textContent += data.main.humidity;
            let cityWindSpeed = document.getElementById("city-windspeed");
-           cityWindSpeed.textContent = data.wind.speed;
+           cityWindSpeed.textContent += data.wind.speed;
            //temp data.main.temp
            //wind speed 
            //humidity
            returnWeatherForecast(city);
            getUVI(data.coord.lat, data.coord.lon);
+
+        
+           var nowMoment = moment();
+
+      var displayMoment = $("<h3>");
+      $("#city-name").empty();
+      $("#city-name").append(
+        displayMoment.text("(" + nowMoment.format("M/D/YYYY") + ")")
+      );
        }
         })
+        
+
+        
 
     }
 
@@ -50,11 +64,14 @@ $(document).ready(function() {
                forecast4.textContent = data.list[4].main.temp
                let forecast5 = document.getElementById("forecast5");
                forecast5.textContent = data.list[5].main.temp
+
+               
                //data.list[1].data.main.temp
                //data.list[2].data.main.humidity
                // data.list[3].data.wind.speed
                console.log(data, "data")
-
+               
+ 
                
             
               
@@ -73,6 +90,8 @@ $(document).ready(function() {
                console.log(data);
                let UV = document.getElementById("UV"); 
            UV.textContent = "UV Index: " + data.value;
+
+           
 
     
 
@@ -96,3 +115,4 @@ $(document).ready(function() {
 
 
         })
+        
