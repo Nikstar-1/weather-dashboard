@@ -1,17 +1,17 @@
-//System is ready for input
+//a weather dashboard with form inputs
 $(document).ready(function() {
     
-    $("#submitWeather").on("click", function(event){
+     $("#submitWeather").on("click", function(event){
         event.preventDefault();
         let city = $("#city").val();
         getCityWeather(city);
         populateHistorySection(city);
-    });
+     });
 
     
-    //Connect API key to api open weather map and get information 
-    function getCityWeather(city){
-    $.ajax({
+     //Connect API key to api open weather map and get information - I am presented with current and future conditions for that city and that city is added to the search history
+     function getCityWeather(city){
+     $.ajax({
         url: "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=84d8ea5be6d3527e97c1d32d85112fb7"+ "&units=imperial",
        type: "GET",
        dataType: "json",
@@ -25,15 +25,15 @@ $(document).ready(function() {
            cityHumidity.textContent += " " + data.main.humidity  + " %";
            let cityWindSpeed = document.getElementById("city-windspeed");
            cityWindSpeed.textContent += " " + data.wind.speed + " MPH";
-        //Weather text and symbols applied
+       //Weather text and symbols applied
            returnWeatherForecast(city);
            getUVI(data.coord.lat, data.coord.lon);
            cityTemp.textContent += " " + data.main.temp + " °C";
 
         //Date added to the page alongside city when uploaded into the browser
-           var nowMoment = moment();
+           let nowMoment = moment();
 
-           var displayMoment = $("<h1>");
+           let displayMoment = $("<h1>");
            $("#city-name").append(
            displayMoment.text("(" + nowMoment.format("D/M/YYYY") + ")")
          );
@@ -41,7 +41,7 @@ $(document).ready(function() {
         })
         
     }
-
+        //Here you are presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
          function returnWeatherForecast(city) {
          let queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric&appid=84d8ea5be6d3527e97c1d32d85112fb7";
          $.ajax({
@@ -64,44 +64,93 @@ $(document).ready(function() {
                let forecast5 = document.getElementById("forecast5");
                forecast5.textContent = data.list[5].main.temp
                forecast5.textContent += "\n" + "Humidity:"+ data.list[5].main.humidity;
-               //data.list[1].data.main.temp
-               //data.list[2].data.main.humidity
-               // data.list[3].data.wind.speed
-               console.log(data, "data")
-               
- 
-               //create elements witrhin that div above and aasign values using data.list[1].wind.speed
           }
          })
          }
-
-              function getUVI(lat, lon){
-            let queryURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=84d8ea5be6d3527e97c1d32d85112fb7"
+          //I view the UV index
+          //THEN I am presented with a color that indicates whether the conditions are favorable..
+          function getUVI(lat, lon){
+          let queryURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=84d8ea5be6d3527e97c1d32d85112fb7"
            $.ajax({
-            url: queryURL,
+           url: queryURL,
            type: "GET",
            dataType: "json",
            success: function(data){
-               console.log(data);
-               let UV = document.getElementById("UV"); 
+           
+           let UV = document.getElementById("UV"); 
            UV.textContent = "UV Index: " + data.value;
            $.get(queryURL).then(function(response){
-            for (i=0;i<5;i++){
-                var date= new Date((response.list[((i+1)*8)-1].dt)*1000).toLocaleDateString();
-                var iconcode= response.list[((i+1)*8)-1].weather[0].icon;
-                var iconurl="https://openweathermap.org/img/wn/"+iconcode+".png";
-                var tempK= response.list[((i+1)*8)-1].main.temp;
-                var tempF=(((tempK-273.5)*1.80)+32).toFixed(2);
-                var humidity= response.list[((i+1)*8)-1].main.humidity;
-            
-                $("#fDate"+i).html(date);
-                $("#fImg"+i).html("<img src="+iconurl+">");
-                $("#fTemp"+i).html(tempF+"&#8457");
-                $("#fHumidity"+i).html(humidity+"%");
+            let currUVIndex = response.value;
+            let uvSeverity = "green";
+            let textColour = "white";
+            if (currUVIndex >= 11) {
+                uvSeverity = "purple";
+            } else if (currUVIndex >= 8) {
+                uvSeverity = "red";
+            } else if (currUVIndex >= 6) {
+                uvSeverity = "orange";
+                textColour = "black"
+            } else if (currUVIndex >= 3) {
+                uvSeverity = "yellow";
+                textColour = "black";
             }
-            
-        });
-    }
+            currWeatherDiv.append(`<p>UV Index: <span class="text-${textColour} ${uvSeverity};">${currUVIndex}</span></p>`);
+        })
+        }
+            });
+        }
+          
+            let localHistory = JSON.parse(window.localStorage.getItem("history")) || [];
+            localHistory.push(city);
+            window.localStorage.setItem("history",JSON.stringify(localHistory))
+            const historyList = document.getElementById("historyList")
+            for (let i =0; i < localStorageHistory.length; i++){
+            let historyElement = document.createElement("li")
+            historyElement.val = historyList[i];
+            historyList.appendChild(historyElement);
+                }
+             });
+             function addToList(city){
+                let listEl= $("<li>"+city.toUpperCase()+"</li>");
+                $(listEl).attr("class","li");
+                $(listEl).attr("historyList",C.toUpperCase());
+                $(".li").append(listEl);
+            }
+
+             function invokePastSearch(event){
+                let liEl=event.target;
+                if (event.target.matches("li")){
+                city=liEl.textContent.trim();
+                currentWeather(city);
+                }
+            }
+
+            function loadlastCity(){
+            $("ul").empty();
+            let City = JSON.parse(localStorage.getItem("history"));
+            if(City!==null){
+             City=JSON.parse(localStorage.getItem("history"));
+            for(i=0; i<City.length;i++){
+            addToList(City[i]);
+            }
+            city=City[i-1];
+            currentWeather(city);
+                }
+            }
+
+            function clearHistory(event){
+                event.preventDefault();
+                City=[];
+                localStorage.removeItem("cityname");
+                document.location.reload();
+            }
+
+            $("#historyList").on("click",displayWeather);
+            $(document).on("click",pastSearch);
+            $(window).on("load",loadlastCity);
+            $("#historyList").on("click",clearHistory);
+        
+
 
     
 
@@ -124,8 +173,8 @@ $(document).ready(function() {
 
 
 
-})}
 
 
-})
+
+
         

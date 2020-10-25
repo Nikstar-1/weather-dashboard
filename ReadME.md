@@ -21,7 +21,7 @@ As someone who travels frequently this'll help me plan adventures away according
 -Plus, a 5 day forecast for current weather searched initially
 -Weather conditions, temperature, humidity, wind speed, and the UV index results shown
 -units=imperial", "&units=metric" applied i.e °C, %, MPH, UV index
--Saves your search into a search history, so you can go back if needed!
+-Saves your search into a search history, you can go back if needed!
 -Refresh to start a new search
 
 
