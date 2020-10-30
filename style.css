@@ -5,6 +5,10 @@
 
 }
 
+body {
+    background-color:whitesmoke;
+}
+
 .navbar-brand {
     font-size: 30px;
 }

@@ -2,7 +2,11 @@
 
 ## Server-Side APIs: Weather Dashboard
 
-Weather Dashboard: This project is a weather dashboard with search functionality to find current weather conditions and forecasted weather for cities all over the world. It uses the OpenWeather API to retrieve data for the cities, AJAX to hook into the API to retrieve the data in JSON format, dynamically updated HTML and CSS powered by jQuery, and displays a search history which the user can click to access past cities searched via local storage.
+Weather Dashboard: 
+This project is a weather dashboard with search functionality to find current weather conditions and forecasted weather for cities all over the world. 
+It uses the OpenWeather API to retrieve data for the cities, AJAX to hook into the API to retrieve the data in JSON format, 
+dynamically updated HTML and CSS powered by jQuery, 
+and displays a search history which the user can click to access past cities searched via local storage.
 
 
 
@@ -13,24 +17,36 @@ https://nikstar-1.github.io/weather-dashboard/
 
 
 # Motivation
-As someone who travels frequently this'll help me plan adventures away according to weather conditions, I'll never forget my brolly again!
+As someone who travels frequently this'll help me plan adventures away according to weather conditions,
+I'll never forget my brolly again!
 
 ## Functionality
 -Input a city, 
+
 -Dashboards will then display the current weather for a city
+
 -Plus, a 5 day forecast for current weather searched initially
+
 -Weather conditions, temperature, humidity, wind speed, and the UV index results shown
+
 -units=imperial", "&units=metric" applied i.e °C, %, MPH, UV index
+
 -Saves your search into a search history, you can go back if needed!
+
 -Refresh to start a new search
 
 
 ## Built With
 HTML
+
 CSS
+
 Openweathermap api
+
 Javascript
+
 Bootstrap
+
 moment.js
 
 
@@ -39,7 +55,7 @@ moment.js
 ## Screenshots:
 
 **Weather Dashboard Main.**
-!["Start Page"](Screenshots/mainPage.png "Start page.")
+!["Start Page"](weatherdashboard.png "Start page.")
 
 
 
@@ -47,8 +63,11 @@ moment.js
 _________________________________________________________________________________________________________________________________________________________________________________
 
 ###06 Server-Side APIs: Weather Dashboard
-Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
-Use the OpenWeather API to retrieve weather data for cities. The documentation includes a section called "How to start" that will provide basic setup and usage instructions. Use localStorage to store any persistent data.
+Developers are often tasked with retrieving data from another application's API and using it in the context of their own. 
+Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. 
+Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
+Use the OpenWeather API to retrieve weather data for cities. 
+The documentation includes a section called "How to start" that will provide basic setup and usage instructions. Use localStorage to store any persistent data.
 
 User Story
 AS A traveler
