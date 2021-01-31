@@ -49,19 +49,19 @@ $(document).ready(function () {
         dataType: 'json',
         success: function (data) {
           let forecast1 = document.getElementById('forecast1');
-          forecast1.textContent = data.list[0].main.temp;
+          forecast1.textContent = '\n' + 'temp:' +data.list[0].main.temp;
           forecast1.textContent += '\n' + 'Humidity:' + data.list[0].main.humidity;
           let forecast2 = document.getElementById('forecast2');
-          forecast2.textContent = data.list[2].main.temp;
+          forecast2.textContent = '\n' + 'temp:' +data.list[2].main.temp;
           forecast2.textContent += '\n' + 'Humidity:' + data.list[2].main.humidity;
           let forecast3 = document.getElementById('forecast3');
-          forecast3.textContent = data.list[3].main.temp;
+          forecast3.textContent = '\n' + 'temp:' +data.list[3].main.temp;
           forecast3.textContent += '\n' + 'Humidity:' + data.list[3].main.humidity;
           let forecast4 = document.getElementById('forecast4');
-          forecast4.textContent = data.list[4].main.temp;
+          forecast4.textContent = '\n' + 'temp:' +data.list[4].main.temp;
           forecast4.textContent += '\n' + 'Humidity:' + data.list[4].main.humidity;
           let forecast5 = document.getElementById('forecast5');
-          forecast5.textContent = data.list[5].main.temp;
+          forecast5.textContent = '\n' + 'temp:' +data.list[5].main.temp;
           forecast5.textContent += '\n' + 'Humidity:' + data.list[5].main.humidity;
         },
       });
