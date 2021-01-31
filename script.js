@@ -4,12 +4,11 @@ $(document).ready(function () {
       event.preventDefault();
       let city = $('#city').val();
       getCityWeather(city);
-      console.log('here');
     });
     //Connect API key to api open weather map and get information - I am presented with current and future conditions for that city and that city is added to the search history
     function getCityWeather(city) {
       $.ajax({
-        url: 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=84d8ea5be6d3527e97c1d32d85112fb7' + '&units=imperial',
+        url: 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=84d8ea5be6d3527e97c1d32d85112fb7' + '&units=metric',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -19,7 +18,6 @@ $(document).ready(function () {
             window.localStorage.setItem('citiesSearched', JSON.stringify(searches));
           }
           displayPreviousSearches();
-          console.log(data);
           let cityName = document.getElementById('city-name');
           //cityName.textContent = ""
           cityName.textContent = data.name;
@@ -34,9 +32,9 @@ $(document).ready(function () {
           getUVI(data.coord.lat, data.coord.lon);
           cityTemp.textContent = ' ' + data.main.temp + ' °C';
           //Date added to the page alongside city when uploaded into the browser
-          let nowMoment = moment();
-          let displayMoment = $('<h1>');
-          $('#city-name').append(displayMoment.text('(' + nowMoment.format('D/M/YYYY') + ')'));
+         
+          let displayDate = $('<h1>');
+          $('#city-name').append(displayDate.text('(' + new Date().toLocaleDateString() + ')'));
         },
       });
     }
@@ -84,23 +82,20 @@ $(document).ready(function () {
           } else {
             UV.style.backgroundColor = 'red';
           }
-          currWeatherDiv.append(`<p>UV Index: <span class="text-${textColour} ${uvSeverity};">${currUVIndex}</span></p>`);
+         // currWeatherDiv.append(`<p>UV Index: <span class="text-${textColour} ${uvSeverity};">${currUVIndex}</span></p>`);
         },
       });
     }
     function displayPreviousSearches() {
-      console.log('Displaying');
       $('.historyList').empty();
       let searchesToDisplay = JSON.parse(window.localStorage.getItem('citiesSearched')) || [];
       for (let i = 0; i < searchesToDisplay.length; i++) {
         let entry = document.createElement('li');
-        console.log(entry);
         entry.textContent = searchesToDisplay[i];
         $('.historyList').append(entry);
       }
     }
     let usersPreviousSearches = JSON.parse(window.localStorage.getItem('citiesSearched')) || [];
-    //console.log(usersPreviousSearches);
     if (usersPreviousSearches.length > 0) {
       getCityWeather(usersPreviousSearches[usersPreviousSearches.length - 1]);
       displayPreviousSearches();
