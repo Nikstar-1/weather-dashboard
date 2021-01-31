@@ -35,6 +35,8 @@ $(document).ready(function () {
          
           let displayDate = $('<h1>');
           $('#city-name').append(displayDate.text('(' + new Date().toLocaleDateString() + ')'));
+          let displayImage = $('<img>').attr("src", "http://openweathermap.org/img/w/" + data.weather[0].icon+ ".png")
+          $("#city-name").append(displayImage)
         },
       });
     }
