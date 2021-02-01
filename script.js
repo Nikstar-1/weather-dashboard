@@ -48,9 +48,13 @@ $(document).ready(function () {
         type: 'GET',
         dataType: 'json',
         success: function (data) {
+          console.log(data)
           let forecast1 = document.getElementById('forecast1');
-          forecast1.textContent = '\n' + 'temp:' +data.list[0].main.temp;
-          forecast1.textContent += '\n' + 'Humidity:' + data.list[0].main.humidity;
+          let displayForecastOne = $('<h1>'); 
+          displayForecastOne.text('\n' + 'temp:' +data.list[0].main.temp + '\n' + 'Humidity:' + data.list[0].main.humidity)
+          let displayImageOne = $('<img>').attr("src", "http://openweathermap.org/img/w/" + data.list[0].weather[0].icon+ ".png")
+          displayForecastOne.append(displayImageOne);
+          forecast1.append(displayForecastOne)
           let forecast2 = document.getElementById('forecast2');
           forecast2.textContent = '\n' + 'temp:' +data.list[2].main.temp;
           forecast2.textContent += '\n' + 'Humidity:' + data.list[2].main.humidity;
