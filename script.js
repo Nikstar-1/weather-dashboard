@@ -51,14 +51,14 @@ $(document).ready(function () {
           console.log(data)
           let forecast1 = $('#forecast1');
           let displayForecastOne = $('<h1>'); 
-          displayForecastOne.text('\n' + 'temp:' +data.list[0].main.temp + '\n' + 'Humidity:' + data.list[0].main.humidity)
+          displayForecastOne.text('\n'  + data.list[0].dt_txt +'temp:' +data.list[0].main.temp + '\n' + 'Humidity:' + data.list[0].main.humidity)
           let displayImageOne = $('<img>').attr("src", "http://openweathermap.org/img/w/" + data.list[0].weather[0].icon+ ".png")
           displayForecastOne.append(displayImageOne);
           forecast1.append(displayForecastOne)
 
           let forecast2 = $('#forecast2');
           let displayForecastTwo = $('<h1>'); 
-          displayForecastTwo.text('\n' + 'temp:' +data.list[0].main.temp + '\n' + 'Humidity:' + data.list[0].main.humidity)
+          displayForecastTwo.text('\n'  + data.list[0].dt_txt +'temp:' +data.list[0].main.temp + '\n' + 'Humidity:' + data.list[0].main.humidity)
           let displayImageTwo = $('<img>').attr("src", "http://openweathermap.org/img/w/" + data.list[0].weather[0].icon+ ".png")
           displayForecastTwo.append(displayImageTwo);
           forecast2.append(displayForecastTwo)
@@ -67,7 +67,7 @@ $(document).ready(function () {
 
           let forecast3 = $('#forecast3');
           let displayForecastThree = $('<h1>'); 
-          displayForecastThree.text('\n' + 'temp:' +data.list[0].main.temp + '\n' + 'Humidity:' + data.list[0].main.humidity)
+          displayForecastThree.text('\n'  + data.list[0].dt_txt +'temp:' +data.list[3].main.temp + '\n' + 'Humidity:' + data.list[0].main.humidity)
           let displayImageThree = $('<img>').attr("src", "http://openweathermap.org/img/w/" + data.list[0].weather[0].icon+ ".png")
           displayForecastThree.append(displayImageThree);
           forecast3.append(displayForecastThree)
@@ -77,7 +77,7 @@ $(document).ready(function () {
 
           let forecast4 = $('#forecast4');
           let displayForecastFour = $('<h1>'); 
-          displayForecastFour.text('\n' + 'temp:' +data.list[0].main.temp + '\n' + 'Humidity:' + data.list[0].main.humidity)
+          displayForecastFour.text('\n'  + data.list[0].dt_txt +'temp:' +data.list[0].main.temp + '\n' + 'Humidity:' + data.list[0].main.humidity)
           let displayImageFour = $('<img>').attr("src", "http://openweathermap.org/img/w/" + data.list[0].weather[0].icon+ ".png")
           displayForecastFour.append(displayImageFour);
           forecast4.append(displayForecastFour)
@@ -87,7 +87,7 @@ $(document).ready(function () {
 
           let forecast5 = $('#forecast5');
           let displayForecastFive = $('<h1>'); 
-          displayForecastFive.text('\n' + 'temp:' +data.list[0].main.temp + '\n' + 'Humidity:' + data.list[0].main.humidity)
+          displayForecastFive.text('\n'  + data.list[0].dt_txt +'temp:' +data.list[0].main.temp + '\n' + 'Humidity:' + data.list[0].main.humidity)
           let displayImageFive = $('<img>').attr("src", "http://openweathermap.org/img/w/" + data.list[0].weather[0].icon+ ".png")
           displayForecastFive.append(displayImageFive);
           forecast5.append(displayForecastFive)

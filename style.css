@@ -2,11 +2,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box
-
 }
 
 body {
     background-color:whitesmoke;
+}
+
+.city-name {
+    font-size: 30px;
 }
 
 .navbar-brand {
@@ -18,35 +21,8 @@ body {
     font-weight: bold;
 }
 
-.city-name {
-    font-size: 30px;
-}
-
-.forecast-date {
-    font-size: 17px;
-}
-
-
-.display {
-    text-align: center;
-}
-
-.five-day-card {
-    margin-left: 58.5px;
-    width: 17px;
-    height: auto;
-    border-radius: 5px;
-    color: white;
-    font-size: larger;
-    background-color: #74c7ff;
-}
 
 .row {
     display: flex;
     margin: 5px 5px 5px 0px;
-}
-@media (max-width:768px) {
-    #previousSearch {
-        max-height: 152px;
-    }
 }
