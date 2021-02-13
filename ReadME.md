@@ -1,6 +1,6 @@
 ### Website Title and Description
 
-## Server-Side APIs: Weather Dashboard
+Server-Side APIs: Weather Dashboard
 
 Weather Dashboard: 
 
